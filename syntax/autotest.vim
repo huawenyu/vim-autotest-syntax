@@ -11,7 +11,14 @@ let b:current_syntax = "log"
 syn case match
 syn match xComment /#.*/
 syn match xSection /^\[.*\]/
-syn keyword xFGTFunction RestoreIPSSIGtftp report comment BackupIPSSIGtftp rebootFirewall expect setvarfor RestoreIPStftp clear_buffer resetFirewall RestoreIPSftp BackupIPSSIGtftp report retrieveFirewall scheduletime setenv coverage_upload_file outputfile rebootFirewall varexpect RestoreFaseftp ctrl_c setdebug comment checknext retrieveSerial increase_vdom gatherPID printreport coverage_clear clean_buffer smartcompare setresultlist coverage_upload sleep RestoreFasetftp restoreConfig purgequarantine writeEnv rebootFirewallNow ctrl_z multiexpect keep_running retrieveProcess setvar compare myinteract expect RestoreIPSSIGtftp varcomment backupConfig restoreImage backupFullConfig setvarresultlist Comment myset myedit reportall
+syn keyword KeywordBasic report comment Comment setdebug varcomment expect multiexpect clear_buffer clean_buffer setenv printreport reportall 
+syn keyword KeywordBasic setvarresultlist setvarfor ctrl_z ctrl_c setvar compare
+syn keyword KeywordBasic myinteract myset myedit save_log save_log_stop
+syn keyword xFGTFunction resetFirewall retrieveFirewall rebootFirewall rebootFirewallNow retrieveSerial coverage_upload_file coverage_upload coverage_clear backupFullConfig restoreImage backupConfig restoreConfig 
+syn keyword xFGTFunction increase_vdom gatherPID 
+syn keyword xFGTFunction RestoreIPSSIGtftp BackupIPSSIGtftp RestoreIPStftp RestoreIPSftp
+syn keyword xFGTFunction RestoreFaseftp RestoreFasetftp
+syn keyword xFGTFunction scheduletime outputfile varexpect checknext  smartcompare setresultlist sleep purgequarantine writeEnv keep_running retrieveProcess
 syn keyword xPCFunction checkHAstatus myftp mytelnet pcsend 
 syn keyword xSwitchFunction set_sw 
 syn keyword xFMGFunction formatFMG commitfgt resetFMG installfgt addfgt reloadfgt deletedevice
@@ -85,9 +92,9 @@ hi def link xEditValue Typedef
 " HighLighting part for the autotest script format 
 " ----------------------------------------
 hi def link xComment Comment
+hi def link KeywordBasic Function
 hi def link xFGTFunction Function
 hi def link xFGTFunctionrange Function
-hi def link xFGTFunction Function
 "hi def link xFGTFunction2 Function
 hi def link xSpecialFunction Function 
 hi def link xPCFunction Function
