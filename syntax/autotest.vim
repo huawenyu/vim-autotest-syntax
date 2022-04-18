@@ -9,40 +9,48 @@ endif
 let b:current_syntax = "log"
 
 syn case match
-syn match xComment /#.*/
 syn match xSection /^\[.*\]/
-syn keyword KeywordBasic report comment Comment setdebug varcomment expect multiexpect clear_buffer clean_buffer setenv printreport reportall 
+syn keyword KeywordBasic print_if expr_if goto_if run_if tags Tags
+syn keyword KeywordBasic sync_point curl expect buf_endwith buf_match report report_if reportall
+syn keyword KeywordBasic comment Comment setdebug varcomment multiexpect clear_buffer clean_buffer setenv printreport
 syn keyword KeywordBasic setvarresultlist setvarfor ctrl_z ctrl_c setvar compare
 syn keyword KeywordBasic myinteract myset myedit save_log save_log_stop
 syn keyword xFGTFunction resetFirewall retrieveFirewall rebootFirewall rebootFirewallNow retrieveSerial coverage_upload_file coverage_upload coverage_clear backupFullConfig restoreImage backupConfig restoreConfig 
-syn keyword xFGTFunction increase_vdom gatherPID 
+syn keyword xFGTFunction increase_vdom gatherPID
 syn keyword xFGTFunction RestoreIPSSIGtftp BackupIPSSIGtftp RestoreIPStftp RestoreIPSftp
 syn keyword xFGTFunction RestoreFaseftp RestoreFasetftp
 syn keyword xFGTFunction scheduletime outputfile varexpect checknext  smartcompare setresultlist sleep purgequarantine writeEnv keep_running retrieveProcess
 syn keyword xPCFunction checkHAstatus myftp mytelnet pcsend 
-syn keyword xSwitchFunction set_sw 
+syn keyword xSwitchFunction set_sw
 syn keyword xFMGFunction formatFMG commitfgt resetFMG installfgt addfgt reloadfgt deletedevice
 syn keyword xSpecialFunction localtelnet localssh windowstelnet localsshv sshsocket localftp end if else elseif fi contained 
 syn region xInclude matchgroup=xHeader start=/include/ end=/$/
 
 syn region Junk matchgroup=xFGTFunctionrange start=+[^-]range+ end="$"
-syn region xAutolocal matchgroup=xParen start=/{/ end=/}/ contains=xSpecialFunction oneline
+syn region xAutolocal matchgroup=xParen start=/{/ end=/}/ contains=xSpecialFunction,contained oneline
 syn region xif matchgroup=xParen start=/</ end=/>/ contains=xSpecialFunction oneline
-syn keyword xToDo TODO FIXME TBD XXX contained
-syn match xComment /#.*/ contains=xTodo
+syn match  xIpAddr /\(\(25\_[0-5]\|2\_[0-4]\_[0-9]\|\_[01]\?\_[0-9]\_[0-9]\?\)\.\)\{3\}\(25\_[0-5]\|2\_[0-4]\_[0-9]\|\_[01]\?\_[0-9]\_[0-9]\?\)/ contained
 
+syn match   xComment /#.*$/
+syn region  xComment2 start="#comment@begin" end="#comment@end"
+syn keyword xToDo  TODO FIXME TBD XXX containedin=xComment,xComment2
+syn match   xSetup /^#setup@\(begin\|end\)/       containedin=xComment
+syn match   xSetup /^#teardown@\(begin\|end\)/    containedin=xComment
+syn match   xSetup /^\s*#label@\w\+/              containedin=xComment
+"syn match   xRegion /@begin\>\|@end\>/ contained
+"syn match   xRegion2 /@\w\+/ contained
 "
 " this part is for the -e something scenario since it's a string
 "
-syn match xParam /\-e[[:space:]]/ nextgroup=xValue skipwhite
-syn match xParam2 /\-p[[:space:]]+/ nextgroup=xValue2 skipwhite
-syn region xValue start=+"+ end=+"+ skip=+\\"+
+syn match xParam   /\-e[[:space:]]/              nextgroup=xValue  skipwhite
+syn match xParam2  /\-p[[:space:]]+/             nextgroup=xValue2 skipwhite
+syn region xValue  start=+"+ end=+"+ skip=+\\"+
 syn region xValue2 start=+"+ end=+"+ skip=+\\"+
 
 "
 " this part is for the - parameter and the value, where it's not a string
 "
-syn region xParam2 matchgroup=xPre start="-\(for\|t\|name\|batch\|v1\|v2\|fail\|a\|n\|l\|h\|o\|to\|v\|b\|c\|d\|to\|r\|ip\|u\|delay\|port\)[[:space:]]" end="[[:space:]]*" 
+syn region xParam2 matchgroup=xPre start="-\(line\|case\|for\|if\|from\|true\|false\|to\|t\|delay\|name\|batch\|v1\|v2\|fail\|r\|a\|n\|l\|h\|o\|to\|v\|b\|c\|d\|r\|ip\|u\|port\)[[:space:]]" end="[[:space:]]*" 
 
 
 
@@ -92,6 +100,7 @@ hi def link xEditValue Typedef
 " HighLighting part for the autotest script format 
 " ----------------------------------------
 hi def link xComment Comment
+hi def link xComment2 Comment
 hi def link KeywordBasic Function
 hi def link xFGTFunction Function
 hi def link xFGTFunctionrange Function
@@ -113,4 +122,21 @@ hi def link xParam2 Define
 hi def link xValue String
 hi def link xValue2 String
 hi def link xPre Define
+hi def link xIpAddr Identifier
+
+hi def link xRegion  Identifier
+hi def link xRegion2 Identifier
+hi def link xLabel   Boolean
+hi def link xSetup   Boolean
+"highlight default link autotestComment      Define
+"highlight default link autotestComment      Comment
+"highlight default link autotestLabel        Label
+"highlight default link autotestVariable     Identifier
+"highlight default link autotestMain         Function
+"highlight default link autotestType         Type
+"highlight default link autotestValueOp      Operator
+"highlight default link autotestEffectOp     Keyword
+"highlight default link autotestNumber       Number
+"highlight default link autotestBool         Boolean
+"highlight default link autotestCondVariable Boolean
 
