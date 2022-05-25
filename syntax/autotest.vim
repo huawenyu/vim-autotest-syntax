@@ -10,8 +10,8 @@ let b:current_syntax = "log"
 
 syn case match
 syn match xSection /^\[.*\]/
-syn keyword KeywordBasic print_if expr_if goto_if run_if tags Tags
-syn keyword KeywordBasic sync_point curl expect buf_endwith buf_match report report_if reportall
+syn keyword KeywordBasic print_if set_if goto_if run_if tags Tags testid TestId TestID TESTID severity Severity
+syn keyword KeywordBasic sync_point curl expect buf_endwith buf_match report check_if reportall
 syn keyword KeywordBasic comment Comment setdebug varcomment multiexpect clear_buffer clean_buffer setenv printreport
 syn keyword KeywordBasic setvarresultlist setvarfor ctrl_z ctrl_c setvar compare
 syn keyword KeywordBasic myinteract myset myedit save_log save_log_stop
@@ -34,9 +34,11 @@ syn match  xIpAddr /\(\(25\_[0-5]\|2\_[0-4]\_[0-9]\|\_[01]\?\_[0-9]\_[0-9]\?\)\.
 syn match   xComment /#.*$/
 syn region  xComment2 start="#comment@begin" end="#comment@end"
 syn keyword xToDo  TODO FIXME TBD XXX containedin=xComment,xComment2
-syn match   xSetup /^#setup@\(begin\|end\)/       containedin=xComment
-syn match   xSetup /^#teardown@\(begin\|end\)/    containedin=xComment
-syn match   xSetup /^\s*#label@\w\+/              containedin=xComment
+syn match   xSetup /^#setup@\(begin\|end\)/              containedin=xComment
+syn match   xSetup /^#teardown@\(begin\|end\)/           containedin=xComment
+syn match   xSetup /^#matrix_setup@\(begin\|end\)/       containedin=xComment
+syn match   xSetup /^#matrix_teardown@\(begin\|end\)/    containedin=xComment
+syn match   xSetup /^\s*#label@\w\+/                     containedin=xComment
 "syn match   xRegion /@begin\>\|@end\>/ contained
 "syn match   xRegion2 /@\w\+/ contained
 "
