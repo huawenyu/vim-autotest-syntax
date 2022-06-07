@@ -24,7 +24,7 @@ syn keyword xPCFunction checkHAstatus myftp mytelnet pcsend
 syn keyword xSwitchFunction set_sw
 syn keyword xFMGFunction formatFMG commitfgt resetFMG installfgt addfgt reloadfgt deletedevice
 syn keyword xSpecialFunction localtelnet localssh windowstelnet localsshv sshsocket localftp end contained
-syn keyword xSpecialFunction while endwhile loop util  if else elseif fi contained
+syn keyword xSpecialFunction while endwhile loop until  if else elseif fi contained
 syn region xInclude matchgroup=xHeader start=/include/ end=/$/
 
 syn region Junk matchgroup=xFGTFunctionrange start=+[^-]range+ end="$"
