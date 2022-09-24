@@ -11,7 +11,7 @@ let b:current_syntax = "log"
 syn case match
 syn match xSection /^\[.*\]/
 syn keyword KeywordBasic print_if set_if goto_if run_if tags Tags testid TestId TestID TESTID severity Severity
-syn keyword KeywordBasic sync_point curl expect buf_endwith buf_match report check_if assert reportall
+syn keyword KeywordBasic sync_point curl expect buf_raw buf_endwith buf_match report check_if assert reportall
 syn keyword KeywordBasic comment Comment setdebug varcomment multiexpect clear_buffer clean_buffer setenv printreport
 syn keyword KeywordBasic setvarresultlist setvarfor ctrl_z ctrl_c setvar compare
 syn keyword KeywordBasic myinteract myset myedit save_log save_log_stop
