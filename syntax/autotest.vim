@@ -20,7 +20,7 @@ syn keyword xFGTFunction increase_vdom gatherPID
 syn keyword xFGTFunction RestoreIPSSIGtftp BackupIPSSIGtftp RestoreIPStftp RestoreIPSftp
 syn keyword xFGTFunction RestoreFaseftp RestoreFasetftp
 syn keyword xFGTFunction scheduletime outputfile varexpect checknext  smartcompare setresultlist sleep purgequarantine writeEnv keep_running retrieveProcess
-syn keyword xPCFunction checkHAstatus myftp mytelnet pcsend 
+syn keyword xPCFunction checkHAstatus myftp mytelnet pcsend tool_dut tool_cmd check_address
 syn keyword xSwitchFunction set_sw
 syn keyword xFMGFunction formatFMG commitfgt resetFMG installfgt addfgt reloadfgt deletedevice
 syn keyword xSpecialFunction localtelnet localssh windowstelnet localsshv sshsocket localftp end contained
@@ -53,9 +53,7 @@ syn region xValue2 start=+"+ end=+"+ skip=+\\"+
 "
 " this part is for the - parameter and the value, where it's not a string
 "
-syn region xParam2 matchgroup=xPre start="-\(line\|case\|for\|if\|from\|true\|false\|to\|t\|delay\|name\|batch\|v1\|v2\|fail\|r\|a\|n\|l\|h\|o\|to\|v\|b\|c\|d\|r\|ip\|u\|port\)[[:space:]]" end="[[:space:]]*" 
-
-
+syn region xParam2 matchgroup=xPre start="-\(line\|case\|for\|if\|from\|before\|after\|true\|false\|to\|t\|delay\|name\|batch\|v1\|v2\|fail\|r\|a\|n\|l\|h\|o\|to\|v\|b\|c\|f\|m\|d\|r\|ip\|u\|port\)[[:space:]]" end="[[:space:]]*" 
 
 
 " 
